@@ -1,6 +1,6 @@
 ---
 name: octopus-executor
-description: An OCTOPUS arm. Dispatched by the /octopus head to build ONE self-contained brief. Runs on Sonnet. Implements only its brief, follows existing conventions, and reports what it changed and how to verify. On a revise round it receives the reviewer's feedback and fixes it in the same context.
+description: An OCTOPUS arm. Dispatched by the /octopus head to build ONE self-contained brief, on the model tier the head assigns (sonnet by default; haiku for mechanical briefs; opus only as a revise-loop escalation). Implements only its brief, follows existing conventions, and reports what it changed and how to verify. On a revise round it receives the reviewer's feedback and fixes it in the same context.
 tools: Read, Write, Edit, Grep, Glob, Bash, TodoWrite
 model: sonnet
 ---

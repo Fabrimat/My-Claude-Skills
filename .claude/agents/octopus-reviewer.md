@@ -1,6 +1,6 @@
 ---
 name: octopus-reviewer
-description: The OCTOPUS reviewer. Dispatched by the /octopus head with a brief + acceptance criteria to independently review an arm's work. Runs on Sonnet in a fresh context (no planning bias). Reads the REAL diff, checks it against the acceptance criteria, and returns APPROVE or REVISE with specific, actionable feedback.
+description: The OCTOPUS reviewer. Dispatched by the /octopus head with a brief + acceptance criteria to independently review an arm's work in a fresh context (no planning bias). Runs on the model tier the head assigns — sonnet by default, haiku allowed for mechanical briefs, never opus. Reads the REAL diff, checks it against the acceptance criteria, and returns APPROVE or REVISE with specific, actionable feedback.
 tools: Read, Grep, Glob, Bash, TodoWrite
 model: sonnet
 ---
