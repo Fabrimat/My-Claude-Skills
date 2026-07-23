@@ -74,6 +74,7 @@ Works inside this repo. To use everywhere, install globally:
 
 ```bash
 cat the-maestro-doctrine.md >> ~/.claude/CLAUDE.md
+mkdir -p ~/.claude/commands ~/.claude/agents
 cp .claude/commands/maestro.md ~/.claude/commands/
 cp .claude/agents/maestro-arm.md .claude/agents/maestro-reviewer.md .claude/agents/fable-advisor.md ~/.claude/agents/
 ```

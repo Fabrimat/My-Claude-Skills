@@ -1,6 +1,6 @@
 ---
 name: maestro-arm
-description: A MAESTRO arm. Dispatched by the /maestro head to build ONE self-contained brief, on the model tier the head assigns per call (sonnet by default; haiku for mechanical briefs; opus only as a revise-loop escalation). Implements only its brief, uses the skills the brief names, follows existing conventions, and reports what it changed and how to verify. On a revise round it fixes the reviewer's feedback in the same context.
+description: A MAESTRO arm. Dispatched by the /maestro head to build ONE self-contained brief, on the model tier the head assigns per call (sonnet by default; haiku for mechanical briefs; opus for a genuinely hard brief or as a revise-loop escalation). Implements only its brief, uses the skills the brief names, follows existing conventions, and reports what it changed and how to verify. On a revise round it fixes the reviewer's feedback in the same context.
 tools: Read, Write, Edit, Grep, Glob, Bash, TodoWrite
 model: sonnet
 ---

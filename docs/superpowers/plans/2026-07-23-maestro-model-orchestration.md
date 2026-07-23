@@ -484,6 +484,7 @@ The live smoke test is a real `/maestro` run and must be executed by the user (i
 
 > **Smoke test:** `/maestro add a short "Usage" note to two separate docs files`
 > Confirm: the plan prints with a per-brief Model tier + Skills; two `maestro-arm`s run in parallel on the assigned tiers; `maestro-reviewer` gates each on the real diff; and on a deliberately risky brief, `fable-advisor` is consulted (ADVISE and/or SUPERVISE).
+> Also confirm the `fable-advisor` agent loads without error (i.e. `model: fable` is a recognized alias on your build).
 
 - [ ] **Step 4: Commit**
 
