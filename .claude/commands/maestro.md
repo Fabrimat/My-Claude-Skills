@@ -54,6 +54,9 @@ tier. Fire them **in parallel** — multiple Agent calls in a **single message**
 - Disjoint files → parallel in the working tree is fine.
 - Briefs may overlap, or you want safe true-parallelism → dispatch each with
   `isolation: worktree`; you integrate the worktrees in the final check.
+  **Record each worktree arm's path** — a worktree arm's changes are NOT in the
+  main tree, so the reviewer (step 4) and your final check (step 6) must be
+  pointed at that path, or they'll see an empty diff.
 
 Pass each arm its full brief verbatim (including its Skills). Arms implement
 **only** their brief and report which files changed, how, and how to verify.
@@ -65,6 +68,10 @@ When an arm reports done, dispatch **`maestro-reviewer`** on the **real diff**
 for a mechanical brief; never `opus`. Give it the brief + acceptance criteria
 and let it read the actual changes. It returns **APPROVE** or **REVISE +
 specific feedback**. Review each brief as its arm finishes — don't batch.
+
+**If the arm ran in a worktree**, tell the reviewer its path and to inspect the
+diff *there* (`git -C <worktree-path> diff`) — the main tree shows nothing for
+that brief.
 
 ### Revise loop (max 2 rounds, then one opus escalation)
 
