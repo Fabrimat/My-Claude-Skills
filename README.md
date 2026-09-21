@@ -75,6 +75,41 @@ Works inside this repo. To use everywhere, install globally:
 ```bash
 cat the-maestro-doctrine.md >> ~/.claude/CLAUDE.md
 mkdir -p ~/.claude/commands ~/.claude/agents
-cp .claude/commands/maestro.md ~/.claude/commands/
+cp .claude/commands/maestro.md .claude/commands/ensemble.md ~/.claude/commands/
 cp .claude/agents/maestro-arm.md .claude/agents/maestro-reviewer.md .claude/agents/fable-advisor.md ~/.claude/agents/
 ```
+
+## 🎻 ENSEMBLE
+
+The model-agnostic, complexity-aware merge of OCTOPUS and MAESTRO. Triages a
+task first — inline, one brief, or full parallel orchestration — then does
+exactly that much work, no more.
+
+```
+/ensemble <task to build>
+```
+
+The head runs on whatever model is driving the session (no Opus/Fable
+assumption) and triages the task on two axes: a **size test** (one
+coherent diff a single reviewer can check → simple; 2+ independently
+reviewable units → complex) and a **risk test** (trust boundary, auth,
+migration, irreversible op, real concurrency → mandatory Fable
+**SUPERVISE** sign-off, on any path). A stricter trivial sub-case skips
+subagents entirely and edits inline. Simple tasks get one brief, one
+**arm** (`maestro-arm`), one **reviewer** (`maestro-reviewer`) pass — the
+brief's required **Verify** field stands in for a separate e2e step.
+Complex tasks get the full MAESTRO protocol inlined: scout & split →
+optional Fable **ADVISE** on the plan → parallel tiered arms (worktree
+isolation for overlap) → per-brief reviewer gate (max 2 revise rounds + one
+opus escalation) → Fable **SUPERVISE** sign-off → head-run e2e build/test/
+integrate.
+
+| File | Role |
+|------|------|
+| `.claude/commands/ensemble.md` | `/ensemble` — the head, triage + both protocols inlined |
+
+No new agent files to install — `/ensemble` reuses `maestro-arm`,
+`maestro-reviewer`, and `fable-advisor` unchanged, everything MAESTRO
+already lists above. `/ensemble` is the **recommended general-purpose entry
+point** going forward; `/maestro` and `/octopus` remain available for
+direct invocation of their specific fixed shapes.

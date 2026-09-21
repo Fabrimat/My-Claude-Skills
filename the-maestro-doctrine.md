@@ -26,5 +26,7 @@ a Fable REVISE as a strong signal, not noise. Not for routine work.
 **Skills first:** reach for the relevant skill before improvising. This
 doctrine only adds model routing on top of that.
 
-**Big multi-part task?** Run `/maestro <task>` for full-power orchestration:
-plan → parallel tiered arms → independent review → Fable sign-off → e2e.
+**Big multi-part task?** Run `/ensemble <task>` — the general entry point:
+it auto-triages complexity and works regardless of which model is driving,
+scaling from an inline fix up to full parallel orchestration. `/maestro` and
+`/octopus` remain available if you want their specific fixed shapes directly.
