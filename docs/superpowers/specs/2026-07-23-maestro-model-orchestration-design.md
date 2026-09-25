@@ -1,4 +1,4 @@
-# MAESTRO 🎼 — model-orchestration bundle
+# MAESTRO 🎼 - model-orchestration bundle
 
 **Date:** 2026-07-23
 **Status:** Design approved, pending spec review
@@ -24,10 +24,10 @@ interpretation and to sign off on hard movements.
 Two ways it engages, so "use Opus normally" is true by default *and* there's a
 full-power mode for big tasks:
 
-1. **Always-on doctrine** — a short snippet installed into `~/.claude/CLAUDE.md`.
+1. **Always-on doctrine** - a short snippet installed into `~/.claude/CLAUDE.md`.
    Makes every ordinary Opus session route models the smart/adaptive way with
    no command to remember.
-2. **`/maestro <task>` command** — explicit full-power orchestration for big
+2. **`/maestro <task>` command** - explicit full-power orchestration for big
    multi-part tasks: plan → (optional Fable plan critique) → parallel tiered
    arms → independent review → Fable supervisor sign-off on risky results →
    e2e + report.
@@ -48,7 +48,7 @@ the always-on doctrine and the `/maestro` planning step.
 **Delegation threshold (always-on mode):** delegate to an arm **only** when
 there is real parallelism (2+ genuinely independent chunks) **or** a clear
 tier-fit win (bulk mechanical → haiku; big independent research → sonnet).
-Otherwise Opus does it inline. Overhead is real — don't spawn an arm to save
+Otherwise Opus does it inline. Overhead is real - don't spawn an arm to save
 Opus one edit.
 
 **Fable threshold (always-on mode):** consult `fable-advisor` only on
@@ -58,7 +58,7 @@ check on a large change). Not for routine work.
 
 ## Components
 
-### A. Always-on doctrine — `the-maestro-doctrine.md`
+### A. Always-on doctrine - `the-maestro-doctrine.md`
 
 A portable Markdown snippet shipped in the repo, meant to be pasted/installed
 into `~/.claude/CLAUDE.md` (global memory, loaded every session). Content:
@@ -69,10 +69,10 @@ into `~/.claude/CLAUDE.md` (global memory, loaded every session). Content:
 - A pointer that `/maestro` is available for full-power orchestration.
 
 It must be **short** (a routing reflex, not an essay) and must not fight the
-superpowers `using-superpowers` wiring — it reinforces "reach for skills
+superpowers `using-superpowers` wiring - it reinforces "reach for skills
 first", then adds model routing on top.
 
-### B. `/maestro <task>` command — `.claude/commands/maestro.md`
+### B. `/maestro <task>` command - `.claude/commands/maestro.md`
 
 Frontmatter: `description`, `argument-hint: <task to build>`.
 
@@ -87,7 +87,7 @@ Protocol (Opus is THE MAESTRO; never writes feature code itself in this mode):
 2. **Optional Fable plan critique.** If the task is large / architecturally
    risky / ambiguous, dispatch `fable-advisor` in **advise** mode on the plan
    *before* building. Fold its guidance into the briefs. Skip for
-   straightforward tasks (adaptive — scaled to benefit).
+   straightforward tasks (adaptive - scaled to benefit).
 3. **Build (parallel arms).** One `maestro-arm` per brief, `model:` set to the
    brief's tier, dispatched in a **single message** for true parallelism. Use
    `isolation: worktree` when briefs may overlap; otherwise working-tree
@@ -125,16 +125,16 @@ Protocol (Opus is THE MAESTRO; never writes feature code itself in this mode):
   checks every acceptance criterion (runs runnable ones), looks for real
   defects only (correctness, edge cases, broke existing behaviour, violated
   constraint, security/data-loss, out-of-scope). Verdict: **APPROVE** (one line
-  on what was verified) or **REVISE** (`file:line — what's wrong — what's
+  on what was verified) or **REVISE** (`file:line - what's wrong - what's
   needed`). No nitpicks, no rubber stamps.
 
 **`fable-advisor`** (`.claude/agents/fable-advisor.md`)
-- Frontmatter: `name`, `description`, `tools: Read, Grep, Glob, Bash`, `model: fable`. **No Write/Edit** — it judges, never edits.
+- Frontmatter: `name`, `description`, `tools: Read, Grep, Glob, Bash`, `model: fable`. **No Write/Edit** - it judges, never edits.
 - Two modes, selected by how the head prompts it:
-  - **Advise** — given a plan / approach / decision + context, returns
+  - **Advise** - given a plan / approach / decision + context, returns
     high-level judgment: risks, what's missing, better approaches, tradeoffs.
     Advice only; the head decides.
-  - **Supervise** — given a brief/goal + the real result (diff), returns
+  - **Supervise** - given a brief/goal + the real result (diff), returns
     **APPROVE** (one line on what convinced it) or **REVISE** (specific,
     actionable points). Reads the actual diff, never signs off from a summary.
 - Independence is the point: it reasons from the code and the goal, not from
@@ -179,5 +179,5 @@ Bundle is prose/config, so verification is structural + a live smoke test:
 - Modifying OCTOPUS or sharing agents with it.
 - Any non-Claude model routing.
 - Auto-installing into `~/.claude/` (documented manual step; no installer script).
-- A config file for tiers — the matrix lives in the prose; change the prose to
+- A config file for tiers - the matrix lives in the prose; change the prose to
   change routing.
